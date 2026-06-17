@@ -1,0 +1,23 @@
+mode: set
+kerberos/pkg/core/authenticator.go:12.59,18.2 2 1
+kerberos/pkg/core/crypto.go:12.40,14.2 1 1
+kerberos/pkg/core/crypto.go:16.45,18.2 1 1
+kerberos/pkg/core/crypto.go:20.29,22.2 1 1
+kerberos/pkg/core/crypto.go:24.32,28.2 3 1
+kerberos/pkg/core/crypto.go:35.25,37.2 1 1
+kerberos/pkg/core/crypto.go:42.66,44.16 2 1
+kerberos/pkg/core/crypto.go:44.16,46.3 1 0
+kerberos/pkg/core/crypto.go:48.2,49.16 2 1
+kerberos/pkg/core/crypto.go:49.16,51.3 1 0
+kerberos/pkg/core/crypto.go:53.2,55.16 3 1
+kerberos/pkg/core/crypto.go:55.16,57.3 1 0
+kerberos/pkg/core/crypto.go:59.2,61.24 2 1
+kerberos/pkg/core/crypto.go:64.67,66.16 2 1
+kerberos/pkg/core/crypto.go:66.16,68.3 1 0
+kerberos/pkg/core/crypto.go:70.2,71.16 2 1
+kerberos/pkg/core/crypto.go:71.16,73.3 1 0
+kerberos/pkg/core/crypto.go:75.2,79.16 4 1
+kerberos/pkg/core/crypto.go:79.16,81.3 1 0
+kerberos/pkg/core/crypto.go:83.2,83.23 1 1
+kerberos/pkg/core/sk1.go:7.71,13.2 1 1
+kerberos/pkg/core/tgt.go:7.88,14.2 1 1
