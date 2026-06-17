@@ -1,0 +1,18 @@
+version: "1.0"
+
+log:
+  level: DEBUG
+
+authentication:
+  required: true
+  session:
+    domain: localhost:8181
+  methods:
+    oidc:
+      enabled: true
+      providers:
+        keycloak:
+          issuer_url: "http://localhost:8080/realms/myrealm"
+          client_id: "myclient"
+          client_secret: "c36tSRn3RpUYhLWk6a70Wm9a5u0qPCwv"
+          redirect_address: "http://localhost:8181"

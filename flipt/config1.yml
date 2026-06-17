@@ -1,0 +1,17 @@
+version: "1.0"
+
+log:
+  level: DEBUG
+
+authentication:
+  required: true
+  session:
+    domain: localhost:8080
+  methods:
+    github:
+      enabled: true
+      client_id: "Ov23lie72ejeSYBgcfJh"
+      client_secret: "cb55c34f688228215317812326ccd1464f585637"
+      redirect_address: "http://localhost:8080"
+      scopes:
+        - "user:email"
