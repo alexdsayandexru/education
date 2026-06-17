@@ -1,0 +1,6 @@
+https://authorization-server.com/oauth/authorize
+?client_id=a17c21ed
+&response_type=code
+&state=5ca75bd30
+&redirect_uri=https%3A%2F%2Fexample-app.com%2Fauth
+&scope=photos
