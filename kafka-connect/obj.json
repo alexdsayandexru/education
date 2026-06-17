@@ -1,0 +1,179 @@
+{
+  "schema": {
+    "type": "struct",
+    "fields": [
+      {
+        "type": "string",
+        "optional": false,
+        "field": "gid"
+      },
+      {
+        "type": "string",
+        "optional": true,
+        "field": "first_name"
+      },
+      {
+        "type": "string",
+        "optional": true,
+        "field": "last_name"
+      },
+      {
+        "type": "string",
+        "optional": true,
+        "field": "patronymic"
+      },
+      {
+        "type": "int32",
+        "optional": true,
+        "name": "io.debezium.time.Date",
+        "version": 1,
+        "field": "birth_date"
+      },
+      {
+        "type": "string",
+        "optional": true,
+        "field": "nickname"
+      },
+      {
+        "type": "string",
+        "optional": true,
+        "field": "gender"
+      },
+      {
+        "type": "string",
+        "optional": true,
+        "field": "city"
+      },
+      {
+        "type": "string",
+        "optional": true,
+        "field": "city_guid"
+      },
+      {
+        "type": "int64",
+        "optional": true,
+        "name": "io.debezium.time.MicroTimestamp",
+        "version": 1,
+        "field": "frozen"
+      },
+      {
+        "type": "int64",
+        "optional": true,
+        "name": "io.debezium.time.MicroTimestamp",
+        "version": 1,
+        "field": "subscription_agreement"
+      },
+      {
+        "type": "int64",
+        "optional": true,
+        "name": "io.debezium.time.MicroTimestamp",
+        "version": 1,
+        "field": "user_agreement"
+      },
+      {
+        "type": "int64",
+        "optional": true,
+        "name": "io.debezium.time.MicroTimestamp",
+        "version": 1,
+        "field": "personal_delete_after"
+      },
+      {
+        "type": "int64",
+        "optional": true,
+        "name": "io.debezium.time.MicroTimestamp",
+        "version": 1,
+        "field": "delete_after"
+      },
+      {
+        "type": "int64",
+        "optional": true,
+        "name": "io.debezium.time.MicroTimestamp",
+        "version": 1,
+        "field": "personal_deleted"
+      },
+      {
+        "type": "int64",
+        "optional": true,
+        "name": "io.debezium.time.MicroTimestamp",
+        "version": 1,
+        "field": "deleted"
+      },
+      {
+        "type": "string",
+        "optional": true,
+        "field": "deleted_reason"
+      },
+      {
+        "type": "int64",
+        "optional": false,
+        "name": "io.debezium.time.MicroTimestamp",
+        "version": 1,
+        "field": "created"
+      },
+      {
+        "type": "int64",
+        "optional": true,
+        "name": "io.debezium.time.MicroTimestamp",
+        "version": 1,
+        "field": "updated"
+      },
+      {
+        "type": "int64",
+        "optional": true,
+        "name": "io.debezium.time.MicroTimestamp",
+        "version": 1,
+        "field": "blocked"
+      },
+      {
+        "type": "int64",
+        "optional": true,
+        "name": "io.debezium.time.MicroTimestamp",
+        "version": 1,
+        "field": "registered"
+      },
+      {
+        "type": "string",
+        "optional": true,
+        "field": "deleted_reason_comment"
+      },
+      {
+        "type": "string",
+        "optional": true,
+        "field": "avatar_small"
+      },
+      {
+        "type": "string",
+        "optional": true,
+        "field": "avatar_large"
+      }
+    ],
+    "optional": false,
+    "name": "idp.public.users.Value"
+  },
+  "payload": {
+    "gid": "055",
+    "first_name": "first 55",
+    "last_name": "last 55",
+    "patronymic": "patronymic 55",
+    "birth_date": 12053,
+    "nickname": "nickname 55",
+    "gender": "f",
+    "city": "city 55",
+    "city_guid": null,
+    "frozen": null,
+    "subscription_agreement": null,
+    "user_agreement": null,
+    "personal_delete_after": null,
+    "delete_after": null,
+    "personal_deleted": null,
+    "deleted": null,
+    "deleted_reason": null,
+    "created": 1748951440835667,
+    "updated": null,
+    "blocked": null,
+    "registered": null,
+    "deleted_reason_comment": null,
+    "avatar_small": null,
+    "avatar_large": null
+  }
+}

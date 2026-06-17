@@ -1,0 +1,49 @@
+{
+    "name": "source-idp-postgresql-connector",
+    "config":
+    {
+        "connector.class": "io.debezium.connector.postgresql.PostgresConnector",
+	    "database.hostname": "host.docker.internal",
+        "database.port": "5434",
+        "database.user": "debezium",
+	    "database.password": "123",
+        "database.dbname": "idp",
+        "plugin.name": "pgoutput",
+        "database.server.name": "idp",
+        "key.converter.schemas.enable": "true",
+        "value.converter.schemas.enable": "true",
+        "value.converter": "org.apache.kafka.connect.json.JsonConverter",
+        "key.converter": "org.apache.kafka.connect.json.JsonConverter",
+	    "table.include.list": "public.users,public.user_emails",
+        "slot.name" : "postgres_debezium",
+        "topic.prefix": "idp",
+        "skip.messages.without.change": "true",
+        "transforms": "unwrap",
+        "transforms.unwrap.type": "io.debezium.transforms.ExtractNewRecordState"
+    }
+}
+
+{
+    "name": "source-idp2-postgresql-connector",
+    "config":
+    {
+        "connector.class": "io.debezium.connector.postgresql.PostgresConnector",
+	    "database.hostname": "host.docker.internal",
+        "database.port": "5434",
+        "database.user": "postgres",
+	    "database.password": "123",
+        "database.dbname": "idp2",
+        "plugin.name": "pgoutput",
+        "database.server.name": "idp2",
+        "key.converter.schemas.enable": "true",
+        "value.converter.schemas.enable": "true",
+        "value.converter": "org.apache.kafka.connect.json.JsonConverter",
+        "key.converter": "org.apache.kafka.connect.json.JsonConverter",
+	    "table.include.list": "public.users,public.user_emails",
+        "slot.name" : "postgres_debezium2",
+        "topic.prefix": "idp2",
+        "skip.messages.without.change": "true",
+        "transforms": "unwrap",
+        "transforms.unwrap.type": "io.debezium.transforms.ExtractNewRecordState"
+    }
+}
