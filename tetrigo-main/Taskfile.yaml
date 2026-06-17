@@ -1,0 +1,79 @@
+version: '3'
+
+env:
+  GOLANG_CROSS_VERSION: 'v1.22'
+  PACKAGE_NAME: 'github.com/Broderick-Westrope/tetrigo'
+
+tasks:
+  default:
+    cmds:
+      - task: lint
+      - task: test
+
+  install:
+    desc: Installs Tetrigo
+    aliases: [i]
+    sources:
+      - './**/*.go'
+    cmds:
+      - go install -v ./cmd/tetrigo
+
+  mod:
+    desc: Downloads and tidy Go modules
+    cmds:
+      - go mod download
+      - go mod tidy
+
+  lint:
+    desc: Runs golangci-lint
+    aliases: [l]
+    sources:
+      - './**/*.go'
+      - .golangci.yaml
+    cmds:
+      - golangci-lint run
+
+  lint:fix:
+    desc: Runs golangci-lint and fixes any issues
+    sources:
+      - './**/*.go'
+      - .golangci.yaml
+    cmds:
+      - golangci-lint run --fix
+
+  test:
+    desc: Runs test suite
+    aliases: [t]
+    cmds:
+      - go test -cover ./...
+
+  build:
+    desc: Build the binary
+    cmds:
+      - go build -v -o ./bin/ {{.CLI_ARGS}} ./...
+
+  run:
+    desc: Run the Go project
+    cmds:
+      - go run ./cmd/tetrigo/ {{.CLI_ARGS}}
+
+  cover:
+    desc: Run tests with coverage
+    cmds:
+      - go test -coverprofile=cover.out {{.CLI_ARGS}} ./...
+      - go tool cover -html=cover.out
+
+  goreleaser:install:
+    desc: Installs goreleaser
+    cmds:
+      - go install github.com/goreleaser/goreleaser@latest
+
+  goreleaser:dryrun:
+    desc: Releases the project
+    cmds:
+      - bash ./scripts/goreleaser/dryrun.sh
+
+  goreleaser:release:
+    desc: Releases the project
+    cmds:
+      - bash ./scripts/goreleaser/release.sh

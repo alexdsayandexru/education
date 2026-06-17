@@ -1,0 +1,34 @@
+next_queue_length = 5 # The number of tetriminos to display in the Next Queue. Valid: 0-7
+ghost_enabled = true # Whether a ghost piece will be displayed at the position that the current tetrimino would hard drop to.
+max_level = 15 # The maximum level to reach before the game ends or the level stops increasing. Valid: 0+ (0 = no max level)
+end_on_max_level = false # Whether the game ends when the max level is reached.
+
+[theme.colors]
+empty_cell = "#303040" # The colour of the empty cells on the matrix.
+ghost_cell = "white" # The colour of the ghost minos.
+
+[theme.colors.tetrimino_cells] # The colours of the minos of each tetrimino.
+I = "#64C4EB"
+O = "#F1D448"
+T = "#A15398"
+S = "#64B452"
+Z = "#DC3A35"
+J = "#5C65A8"
+L = "#E07F3A"
+
+[theme.characters] # The characters used to represent the different elements of the game.
+tetriminos = "██"
+empty_cell = "▕ "
+ghost_cell = "░░"
+
+[keys] # Keybindings to control the game. Note, these keys do not control the menu.
+force_quit = ["ctrl+c"]
+exit = ["esc"]
+help = ["h"]
+submit = [" ", "enter"]
+up = ["w"]
+down = ["s"]
+left = ["a"]
+right = ["d"]
+rotate_counter_clockwise = ["q"]
+rotate_clockwise = ["e"]
