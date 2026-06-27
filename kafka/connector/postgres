@@ -1,0 +1,37 @@
+select setting, enumvals from pg_settings where name = 'wal_level'
+
+ALTER SYSTEM SET wal_level = logical;
+-------------------------------------------------------------------------------
+SELECT pg_create_logical_replication_slot('postgres_debezium', 'pgoutput');
+
+select * from pg_publication;
+select * from pg_replication_slots;
+select * from pg_stat_replication; 
+SELECT * FROM pg_publication_tables
+
+CREATE ROLE debezium REPLICATION LOGIN;
+-------------------------------------------------------------------------------
+INSERT INTO public.users(
+	gid, first_name, last_name, patronymic, birth_date, nickname, gender, created)
+	VALUES ('007', 'first 7', 'last 7', 'patronymic 7', '2003-03-03', 'nickname 6', 'f', now());
+
+update public.users set gid = '005' where gid = '0054'
+
+select gid, first_name, last_name, patronymic, birth_date, nickname, gender, created from public.users
+
+ALTER TABLE users REPLICA IDENTITY FULL;
+CREATE PUBLICATION users_publication FOR TABLE users;
+--CREATE PUBLICATION pub FOR TABLE table1, table2, table3;
+-------------------------------------------------------------------------------
+INSERT INTO public.user_emails(
+	id, address, created, gid)
+	VALUES ('0a1d9cf5-08ee-4382-8ca9-000000000009', '0071@mail.ru', now(), '007');
+
+select * from user_emails
+
+ALTER TABLE user_emails REPLICA IDENTITY FULL;
+CREATE PUBLICATION user_emails_publication FOR TABLE user_emails;
+-------------------------------------------------------------------------------
+SELECT pg_create_logical_replication_slot('postgres_test', 'test_decoding');
+--select pg_drop_replication_slot('postgres_test')
+SELECT * FROM pg_logical_slot_get_changes('postgres_test', NULL, NULL);

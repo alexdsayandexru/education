@@ -1,0 +1,73 @@
+============================================================================================
+Полезные ссылки
+--------------------------------------------------------------------------------------------
+https://habr.com/ru/companies/flant/articles/523510/
+https://github.com/debezium/debezium-examples/tree/main/tutorial
+https://habr.com/ru/companies/first/articles/668516/
+
+
+============================================================================================
+Шаг 1: Установка: zookeeper, kafka, debezium, schema-registry, kafka-ui
+--------------------------------------------------------------------------------------------
+
+>docker compose up
+
+============================================================================================
+Настройка PostgreSQL (https://habr.com/ru/articles/779620/)
+--------------------------------------------------------------------------------------------
+
+CREATE ROLE debezium REPLICATION LOGIN;
+password:123
+Membership -> Member of -> User/Role + : postgres, WITH ADMIN
+
+SELECT setting, enumvals from pg_settings WHERE name = 'wal_level'
+ALTER SYSTEM SET wal_level = logical;
+
+>sudo -u postgres /Library/PostgreSQL/17/bin/pg_ctl -D /Library/PostgreSQL/17/data restart
+
+SELECT pg_create_logical_replication_slot('postgres_debezium', 'pgoutput');
+select * from pg_replication_slots;
+
+ALTER TABLE users REPLICA IDENTITY FULL;
+ALTER TABLE user_emails REPLICA IDENTITY FULL;
+
+CREATE PUBLICATION dbz_publication FOR ALL TABLES;
+ALTER PUBLICATION dbz_publication SET (publish = 'insert, update, delete');
+DROP PUBLICATION dbz_publication
+
+SELECT * FROM pg_publication;
+SELECT * FROM pg_publication_tables
+
+============================================================================================
+Регистрация коннектора (Postman)
+--------------------------------------------------------------------------------------------
+
+GET:http://localhost:8083/connectors
+
+POST:http://localhost:8083/connectors
+Body
+{
+    "name": "source-idp-postgresql-connector",
+    "config": 
+    {
+        ...
+    }
+}
+
+GET:http://localhost:8083/connectors/source-idp-postgresql-connector/status
+DELETE:http://localhost:8083/connectors/source-idp-postgresql-connector
+
+
+POST:http://localhost:8083/connectors
+Body
+{
+    "name": "sync-idp-jdbc-connector",
+    "config": 
+    {
+        ...
+    }
+}
+
+GET:http://localhost:8083/connectors/sync-idp-jdbc-connector/status
+DELETE:http://localhost:8083/connectors/sync-idp-jdbc-connector
+

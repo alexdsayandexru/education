@@ -1,0 +1,16 @@
+cd '/Users/aasudakov/kafka/kafka_2.12-3.6.1'
+
+kafka-topics.sh --bootstrap-server kafka:9092 --delete --topic test1
+
+bin/kafka-topics.sh --bootstrap-server localhost:9092 --topic test1 --describe
+bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --group group1 --describe
+
+-------------------------------------------------------------------------------------------
+bin/kafka-console-producer.sh --topic test1 --bootstrap-server localhost:9092
+bin/kafka-console-consumer.sh --topic test1 --from-beginning --bootstrap-server localhost:9092 --group group1
+
+bin/kafka-topics.sh --bootstrap-server localhost:9092 --topic test1 --alter --partitions 3
+
+// кафка из докера
+docker compose -f docker-compose.yml up
+https://habr.com/ru/articles/753398/

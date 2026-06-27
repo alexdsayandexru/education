@@ -1,0 +1,29 @@
+{
+    "name": "sync-idp2-jdbc-connector",
+    "config":
+    {
+        "connector.class": "io.debezium.connector.jdbc.JdbcSinkConnector",
+        "tasks.max": "1",
+        "connection.url": "jdbc:postgresql://host.docker.internal:5434/idp",
+        "connection.username": "postgres",
+        "connection.password": "123",
+        "insert.mode": "upsert",
+        "primary.key.mode": "record_key",
+        "schema.evolution": "basic",
+        "topics": "idp2.public.users,idp2.public.user_emails",
+        "hibernate.dialect": "org.hibernate.dialect.PostgreSQLDialect",
+        "schemas.enable": "true",
+        "value.converter": "org.apache.kafka.connect.json.JsonConverter",
+        "key.converter": "org.apache.kafka.connect.json.JsonConverter",
+        "auto.create": "true",
+        "auto.evolve": "true",
+        "transforms": "dropTopicPrefix",
+        "transforms.dropTopicPrefix.type":"org.apache.kafka.connect.transforms.RegexRouter",
+        "transforms.dropTopicPrefix.regex":"^[^.]+.[^.]++.(.*)",
+        "transforms.dropTopicPrefix.replacement":"$1",
+        "errors.tolerance": "all",
+        "errors.deadletterqueue.topic.name": "myDLQTopicName2",
+        "errors.log.include.messages": "true",
+        "errors.log.enable": "true"
+    }
+}
